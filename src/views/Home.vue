@@ -26,6 +26,9 @@ export default {
       } else {
         return y
       }
+    },
+    mul(a, b) {
+      return a *b
     }
   },
   components: {

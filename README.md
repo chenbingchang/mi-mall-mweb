@@ -28,6 +28,8 @@ npm run lint
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
+
+
 vscode 保存自动格式化
 1、安装 eslint/prettier/vetur 插件
 2、eslint 和 prettier 的规则统一，特别是单引号和行尾分号
