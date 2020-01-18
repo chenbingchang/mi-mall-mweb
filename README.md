@@ -64,4 +64,7 @@ vscode 配置
 
 项目 VSCODE 配置：在项目根目录下面创建.vscode 文件夹，下面新增 settings.json 文件，
 
-技术栈：vue 全家桶+axios+sass
+技术栈：vue 全家桶 + axios + sass
+
+node:12.10.0
+npm:6.10.3
