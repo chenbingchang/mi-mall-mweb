@@ -28,8 +28,6 @@ npm run lint
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-
-
 vscode 保存自动格式化
 1、安装 eslint/prettier/vetur 插件
 2、eslint 和 prettier 的规则统一，特别是单引号和行尾分号
@@ -46,20 +44,11 @@ vscode 配置
 "source.fixAll.eslint": true,
 "source.organizeImports": true
 },
-//.vue 文件 template 格式化支持，并使用 js-beautify-html 插件
-"vetur.format.defaultFormatter.html": "js-beautify-html",
-"vetur.format.defaultFormatterOptions": {
-//js-beautify-html 格式化配置
-"js-beautify-html": {
-"wrap*attributes": "force-expand-multiline"
-// "wrap_attributes": "force-aligned"
-},
-},
 "[javascript]": {
 "editor.defaultFormatter": "esbenp.prettier-vscode"
 },
 "[vue]": {
-"editor.defaultFormatter": "octref.vetur"
+"editor.defaultFormatter": "esbenp.prettier-vscode"
 },
 "[jsonc]": {
 "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -71,7 +60,7 @@ vscode 配置
 "[json]": {
 "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
-/* 代码保存自动格式化--------------------------------------结束 \_/
+/_ 代码保存自动格式化--------------------------------------结束 _/
 
 项目 VSCODE 配置：在项目根目录下面创建.vscode 文件夹，下面新增 settings.json 文件，
 

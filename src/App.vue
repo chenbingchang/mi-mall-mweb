@@ -9,4 +9,7 @@
 </template>
 
 <style lang="scss">
+#app {
+  font-size: 14px;
+}
 </style>
