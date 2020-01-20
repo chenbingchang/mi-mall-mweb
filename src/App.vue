@@ -2,8 +2,9 @@
   <div id="app">
     <!-- 头部 -->
     <div class="head">
-      <div class="search"></div>
-      <div class="category"></div>
+      <!-- <div class="search"></div>
+      <div class="category"></div> -->
+      啊啊啊啊
     </div>
     <router-view />
   </div>
@@ -11,11 +12,18 @@
 
 <style lang="scss">
 @import '@/common/css/base';
-@import '@/common/css/func';
+@import '@/common/css/common';
 
 .head {
-  @include px2rem(width, 375);
-  @include px2rem(height, 73.75);
+  width: px2rem(375);
+  height: px2rem(73.75);
   border: 1px solid #333;
+  @include fontSize(16px);
+}
+
+#app {
+  .head {
+    @include fontSize(18px);
+  }
 }
 </style>
