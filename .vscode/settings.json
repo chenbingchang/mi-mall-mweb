@@ -23,6 +23,11 @@
   },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // scss文件格式化，保存时自动格式化
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
   }
   /* 代码保存自动格式化--------------------------------------结束 */
 }

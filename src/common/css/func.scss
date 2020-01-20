@@ -1,0 +1,9 @@
+/*
+功能
+设计稿按照iphone6来(375*667)
+*/
+
+// px转成rem
+@mixin px2rem($name, $px) {
+  $name: $px / 100 rem;
+}

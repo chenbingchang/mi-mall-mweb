@@ -1,0 +1,53 @@
+/* 基础样式 */
+/* 参考:https://juejin.im/post/5b03bb026fb9a07ac0229365 */
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+/*行内块元素*/
+input,
+img {
+  margin: 0;
+  padding: 0;
+  border: 0 none;
+  outline-style: none;
+  vertical-align: bottom;
+}
+
+textarea {
+  /* 边框清零 */
+  border: none;
+  /* 轮廓线清零 */
+  outline: none;
+  /* 防止文本域被随意拖拽 */
+  resize: none;
+}
+
+table {
+  /*边框合并*/
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* 使用伪元素清除浮动 */
+.clearfix::before,
+.clearfix::after {
+  content: '';
+  display: block;
+  height: 0;
+  line-height: 0;
+  visibility: none;
+  clear: both;
+}
+
+.clearfix {
+  *zoom: 1;
+}
