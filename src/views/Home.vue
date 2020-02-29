@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <h1>home</h1>
+    <div class="header">头部</div>
+    <div class="catogery">分类</div>
   </div>
 </template>
 
