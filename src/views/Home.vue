@@ -1,7 +1,8 @@
 <template>
   <div class="home">
-    <div class="header">头部</div>
-    <div class="catogery">分类</div>
+    <header class="header"></header>
+    <section class="content-wrap"></section>
+    <footer class="catogery"></footer>
   </div>
 </template>
 
@@ -18,7 +19,34 @@ export default {
 </script>
 
 <style lang="scss">
-h1 {
-  font-size: 14px;
+.home {
+  width: 100vw;
+  height: 100vh;
+
+  .header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100px;
+    background: red;
+  }
+
+  .content-wrap {
+    position: absolute;
+    top: 100px;
+    bottom: 100px;
+    width: 100vw;
+    background: orange;
+  }
+
+  .catogery {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100px;
+    background: green;
+  }
 }
 </style>

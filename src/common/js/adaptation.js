@@ -58,18 +58,18 @@ function adaptation() {
 
     /**
      * 注意：由于html的font-size设置的特别大，使得行内块元素之间的间距会变得非常大，注意清空行内块的间距
-     * 设计稿基于iphone6(375*667)
+     * 设计稿基于(360*640)
      * 方便计算，设计的html的font-size: 100px;
      * screen.width 屏幕的逻辑像素
      */
     if (!isLandscape) {
       // 竖屏
       docEle.style.fontSize =
-        100 * dpr * (screen.width / 375) * fontSizeRadio + 'px'
+        100 * dpr * (screen.width / 360) * fontSizeRadio + 'px'
     } else {
       // 横屏
       docEle.style.fontSize =
-        100 * dpr * (screen.height / 375) * fontSizeRadio + 'px'
+        100 * dpr * (screen.height / 360) * fontSizeRadio + 'px'
     }
     docEle.setAttribute('data-dpr', dpr)
   }
