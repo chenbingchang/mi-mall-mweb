@@ -1,8 +1,7 @@
 <template>
   <div class="home">
-    <header class="header"></header>
-    <section class="content-wrap"></section>
-    <footer class="catogery"></footer>
+    <header class="header">头部</header>
+    <section class="content-wrap">内容</section>
   </div>
 </template>
 
@@ -19,34 +18,30 @@ export default {
 </script>
 
 <style lang="scss">
+@import '@/common/css/common';
 .home {
+  position: absolute;
+  top: 0;
+  bottom: px2rem(52);
   width: 100vw;
-  height: 100vh;
+  background: red;
+  font-size: px2rem(18);
 
   .header {
     position: fixed;
     left: 0;
     top: 0;
-    width: 100vw;
-    height: 100px;
-    background: red;
+    width: 100%;
+    height: px2rem(100);
+    background: greenyellow;
   }
 
   .content-wrap {
     position: absolute;
-    top: 100px;
-    bottom: 100px;
-    width: 100vw;
-    background: orange;
-  }
-
-  .catogery {
-    position: fixed;
-    left: 0;
+    top: px2rem(100);
     bottom: 0;
-    width: 100vw;
-    height: 100px;
-    background: green;
+    width: 100%;
+    background: blue;
   }
 }
 </style>
