@@ -1,7 +1,7 @@
 {
   /* 代码保存自动格式化--------------------------------------开始 */
   //保存自动格式化
-  // "editor.formatOnSave": true,
+  "editor.formatOnSave": true,
   // 保存时的task
   "editor.codeActionsOnSave": {
     "source.fixAll": true,
