@@ -1,6 +1,6 @@
+import adaptation from '@common/js/adaptation'
 import Vue from 'vue'
 import App from './App.vue'
-import adaptation from './common/js/adaptation'
 import router from './router'
 import store from './store'
 

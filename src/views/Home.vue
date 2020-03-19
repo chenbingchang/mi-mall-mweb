@@ -18,7 +18,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/common/css/common';
 .home {
   position: absolute;
   top: 0;

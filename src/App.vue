@@ -1,10 +1,9 @@
 <template>
   <div id="app">
-    <router-view />
+    <keep-alive>
+      <router-view />
+    </keep-alive>
   </div>
 </template>
 
-<style lang="scss">
-@import '@/common/css/base';
-@import '@/common/css/common';
-</style>
+<style lang="scss"></style>

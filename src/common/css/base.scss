@@ -51,3 +51,8 @@ table {
 .clearfix {
   *zoom: 1;
 }
+
+a {
+  /* 清除下划线 */
+  text-decoration: none;
+}

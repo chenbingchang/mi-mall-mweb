@@ -1,0 +1,42 @@
+/* 要使用绝对路径，使用相对路径引入字体会报错 */
+@font-face {
+  font-family: 'iconfont';
+  src: url('/src/assets/font/common/font/iconfont.eot'); /* IE9 */
+  src: url('/src/assets/font/common/font/iconfont.eot')
+      format('embedded-opentype'),
+    /* IE6-IE8 */
+      url('data:application/x-font-woff2;charset=utf-8;base64,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')
+      format('woff2'),
+    url('/src/assets/font/common/font/iconfont.woff') format('woff'),
+    url('/src/assets/font/common/font/iconfont.ttf') format('truetype'),
+    /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+      url('/src/assets/font/common/font/iconfont.svg') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: 'iconfont' !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-user:before {
+  content: '\e73d';
+}
+
+.icon-discovery:before {
+  content: '\e607';
+}
+
+.icon-cart:before {
+  content: '\e66a';
+}
+
+.icon-category:before {
+  content: '\e602';
+}
+
+.icon-home:before {
+  content: '\e6af';
+}

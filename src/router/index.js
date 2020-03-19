@@ -6,27 +6,41 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'index',
     component: () =>
-      import(/* webpackChunkName: "index" */ '../views/index.vue'),
+      import(/* webpackChunkName: "index" */ '@/views/index.vue'),
     children: [
       {
         path: '/',
         name: 'home',
         component: () =>
-          import(/* webpackChunkName: "home" */ '../views/home.vue'),
+          import(/* webpackChunkName: "home" */ '@/views/home.vue'),
+      },
+      {
+        path: 'category',
+        name: 'category',
+        component: () =>
+          import(/* webpackChunkName: "category" */ '@/views/category.vue'),
+      },
+      {
+        path: 'discover',
+        name: 'discover',
+        component: () =>
+          import(/* webpackChunkName: "discover" */ '@/views/discover.vue'),
+      },
+      {
+        path: 'cart',
+        name: 'cart',
+        component: () =>
+          import(/* webpackChunkName: "cart" */ '@/views/cart.vue'),
+      },
+      {
+        path: 'user',
+        name: 'user',
+        component: () =>
+          import(/* webpackChunkName: "user" */ '@/views/user.vue'),
       },
     ],
   },
-  // {
-  //   path: '/about',
-  //   name: 'about',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () =>
-  //     import(/* webpackChunkName: "about" */ '../views/About.vue'),
-  // },
 ]
 
 const router = new VueRouter({

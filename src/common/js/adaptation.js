@@ -49,7 +49,6 @@ function adaptation() {
     fontSizeRadio = setFz / realFz
   }
 
-  let tid = null // 定时器id，防抖
   let setBaseFontSize = function() {
     // 横屏状态检测
     if (window.orientation === 90 || window.orientation === -90) {
@@ -74,15 +73,12 @@ function adaptation() {
     docEle.setAttribute('data-dpr', dpr)
   }
 
-  tid = setTimeout(setBaseFontSize, 33)
-
   //页面发生变化时重置font-size
   //防止多个事件重复执行，增加延迟300ms操作(防抖)
   window.addEventListener(
     'resize',
     function() {
-      clearTimeout(tid)
-      tid = setTimeout(setBaseFontSize, 300)
+      setBaseFontSize()
     },
     false
   )
@@ -91,8 +87,7 @@ function adaptation() {
     'pageshow',
     function(e) {
       if (e.persisted) {
-        clearTimeout(tid)
-        tid = setTimeout(setBaseFontSize, 300)
+        setBaseFontSize()
       }
     },
     false
