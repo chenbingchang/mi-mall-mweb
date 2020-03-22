@@ -5,7 +5,7 @@
 <script>
 export default {
   name: 'user',
-  data() {
+  data () {
     return {}
   },
 }

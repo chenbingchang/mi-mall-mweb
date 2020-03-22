@@ -5,7 +5,7 @@
 <script>
 export default {
   name: 'cart',
-  data() {
+  data () {
     return {}
   },
 }

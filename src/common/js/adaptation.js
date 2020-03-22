@@ -11,10 +11,10 @@
  * 横竖屏：横屏时html字体大小按手机屏幕高度计算
  */
 
-function adaptation() {
-  let docEle = document.documentElement // html标签
-  let dpr = window.devicePixelRatio || 1 // dpr
-  let scale = 1 / dpr // 要么整体缩放比例
+function adaptation () {
+  const docEle = document.documentElement // html标签
+  const dpr = window.devicePixelRatio || 1 // dpr
+  const scale = 1 / dpr // 要么整体缩放比例
   let fontSizeRadio = 1 // 手机字体正常比例
   let isLandscape = false // 是否横屏
 
@@ -23,33 +23,33 @@ function adaptation() {
     .getElementsByName('viewport')[0]
     .setAttribute(
       'content',
-      `width=device-width,initial-scale=${scale},maximum-scale=${scale},minimum-scale=${scale},user-scalable=no`
+      `width=device-width,initial-scale=${scale},maximum-scale=${scale},minimum-scale=${scale},user-scalable=no`,
     )
 
   // 试探字体大小，用于检测系统字体是否正常
   let setFz = '100px'
-  //给head增加一个隐藏元素
-  let headEle = document.getElementsByTagName('head')[0]
-  let spanEle = document.createElement('span')
+  // 给head增加一个隐藏元素
+  const headEle = document.getElementsByTagName('head')[0]
+  const spanEle = document.createElement('span')
 
   spanEle.style.fontSize = setFz
   spanEle.style.display = 'none'
   headEle.appendChild(spanEle)
 
-  //判断元素真实的字体大小是否setFz
-  //如果不相等则获取真实的字体换算比例
+  // 判断元素真实的字体大小是否setFz
+  // 如果不相等则获取真实的字体换算比例
   let realFz = getComputedStyle(spanEle).getPropertyValue('font-size')
 
   if (setFz !== realFz) {
-    //去掉单位px，下面要参与计算
+    // 去掉单位px，下面要参与计算
     setFz = parseFloat(setFz)
     realFz = parseFloat(realFz)
 
-    //获取字体换算比例
+    // 获取字体换算比例
     fontSizeRadio = setFz / realFz
   }
 
-  let setBaseFontSize = function() {
+  const setBaseFontSize = function () {
     // 横屏状态检测
     if (window.orientation === 90 || window.orientation === -90) {
       isLandscape = true
@@ -73,24 +73,24 @@ function adaptation() {
     docEle.setAttribute('data-dpr', dpr)
   }
 
-  //页面发生变化时重置font-size
-  //防止多个事件重复执行，增加延迟300ms操作(防抖)
+  // 页面发生变化时重置font-size
+  // 防止多个事件重复执行，增加延迟300ms操作(防抖)
   window.addEventListener(
     'resize',
-    function() {
+    function () {
       setBaseFontSize()
     },
-    false
+    false,
   )
   // 当一条会话历史记录被执行的时候将会触发页面显示(pageshow)事件。(这包括了后退/前进按钮操作，同时也会在onload 事件触发后初始化页面时触发)
   window.addEventListener(
     'pageshow',
-    function(e) {
+    function (e) {
       if (e.persisted) {
         setBaseFontSize()
       }
     },
-    false
+    false,
   )
 }
 

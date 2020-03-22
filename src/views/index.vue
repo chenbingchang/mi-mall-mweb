@@ -10,7 +10,10 @@
         :to="{ name: footerTab.cmpName }"
         :key="footerTab.cmpName"
       >
-        <i class="iconfont" :class="footerTab.iconClassName"></i>
+        <i
+          class="iconfont"
+          :class="footerTab.iconClassName"
+        ></i>
         <span class="txt">{{ footerTab.txt }}</span>
       </router-link>
     </footer>
@@ -22,7 +25,7 @@
 
 export default {
   name: 'index',
-  data() {
+  data () {
     return {
       footerTabList: [
         {

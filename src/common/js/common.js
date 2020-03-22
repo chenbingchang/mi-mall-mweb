@@ -4,18 +4,18 @@
  * @param {number} delay 延迟时间，单位毫秒，默认200
  * @return {Function} 返回防抖函数
  */
-function debounced(fn, delay = 200) {
+function debounced (fn, delay = 200) {
   // 定时器
   let timer
 
-  return function() {
+  return function () {
     // 保存函数调用时的上下文和参数，传递给fn
-    let context = this
-    let args = arguments
+    const context = this
+    const args = arguments
     // 如果定时器已存在则先清除，保证不执行fn
     clearTimeout(timer)
     // 当返回的函数被最后一次调用，即过了delay毫秒后执行fn
-    timer = setTimeout(function() {
+    timer = setTimeout(function () {
       fn.apply(context, args)
     }, delay)
   }
@@ -27,23 +27,23 @@ function debounced(fn, delay = 200) {
  * @param {number} threshhold 执行间隔，单位毫秒，默认250
  * @return {Function} 返回一个“节流”函数
  */
-function throttle(fn, threshhold = 250) {
-  //记录上次执行对时间
+function throttle (fn, threshhold = 250) {
+  // 记录上次执行对时间
   let last
   // 定时器
   let timer
 
   // 返回的函数，每过 threshhold 毫秒就执行一次 fn 函数
-  return function() {
+  return function () {
     // 保存函数调用时的上下文和参数，传递给fn
-    let context = this
-    let args = arguments
-    let now = +new Date()
+    const context = this
+    const args = arguments
+    const now = +new Date()
     // 如果距离上次执行的时间小于threshhold那么就放弃执行fn，并重新计时
     if (last && now < last + threshhold) {
       clearTimeout(timer)
       // 保证在当前时间区间结束后，再执行一次fn
-      timer = setTimeout(function() {
+      timer = setTimeout(function () {
         last = now
         fn.apply(context, args)
       }, threshhold)
@@ -59,29 +59,29 @@ function throttle(fn, threshhold = 250) {
  * @param {number} tiems 时间戳，可选
  * @param {string} timeType 时间的格式。H，小时; I,小时：分钟; S，小时:分钟:秒; 默认S
  */
-function curDateTime(tiems, timeType = 'S') {
-  let d = tiems ? new Date(tiems) : new Date()
-  let year = d.getFullYear()
+function curDateTime (tiems, timeType = 'S') {
+  const d = tiems ? new Date(tiems) : new Date()
+  const year = d.getFullYear()
   let month = d.getMonth() + 1
-  let date = d.getDate() 
+  let date = d.getDate()
   let hours = d.getHours()
   let minutes = d.getMinutes()
   let seconds = d.getSeconds()
 
   if (month < 10) {
-    month = '0'  + month
+    month = '0' + month
   }
   if (date < 10) {
-    date = '0'  + date
+    date = '0' + date
   }
   if (hours < 10) {
-    hours = '0'  + hours
+    hours = '0' + hours
   }
   if (minutes < 10) {
-    minutes = '0'  + minutes
+    minutes = '0' + minutes
   }
   if (seconds < 10) {
-    seconds = '0'  + seconds
+    seconds = '0' + seconds
   }
 
   let timeTxt = ''
@@ -99,7 +99,7 @@ function curDateTime(tiems, timeType = 'S') {
       timeTxt = `${hours}:${minutes}:${seconds}`
   }
 
-  let result = `${year}-${month}-${date} ${timeTxt}`
+  const result = `${year}-${month}-${date} ${timeTxt}`
   return result
 }
 
@@ -107,20 +107,20 @@ function curDateTime(tiems, timeType = 'S') {
  * 获取当前时间、当前时间戳、和今天0时的时间戳
  * @returns {Object} 当前的时间信息。todayZeroTimeStamp,// 今天0时的时间戳；curDateTimeStr,// 现在的时间，yyyy-MM-dd HH:mm:ss；curTimeStamp// 现在的时间戳
  */
-function curTimeObj() {
-  let time = new Date()
-  let curTimeStamp = time.getTime()
-  let todayZeroTimeStamp =
+function curTimeObj () {
+  const time = new Date()
+  const curTimeStamp = time.getTime()
+  const todayZeroTimeStamp =
     curTimeStamp -
     ((time.getHours() * 3600 + time.getMinutes() * 60 + time.getSeconds()) *
       1000 +
       time.getMilliseconds())
-  let curDateTimeStr = curDateTime(curTimeStamp)
+  const curDateTimeStr = curDateTime(curTimeStamp)
 
   return {
     todayZeroTimeStamp, // 今天0时的时间戳
     curDateTimeStr, // 现在的时间，yyyy-MM-dd HH:mm:ss
-    curTimeStamp, ,// 现在的时间戳
+    curTimeStamp, // 现在的时间戳
   }
 }
 
@@ -131,20 +131,20 @@ function curTimeObj() {
  * @param {Boolean} isAfter 可选的时间是当前时间之前还是之后。true: 之后（默认）；false: 之前；
  * @returns {Object} selectableRange // 时间范围;isValid: true,// 选择的时间是否合法
  */
-function computedTimeRange(curDateTimeStr, selDateTimeStr, isAfter = true) {
-  let result = {
+function computedTimeRange (curDateTimeStr, selDateTimeStr, isAfter = true) {
+  const result = {
     selectableRange: '00:00:00 - 23:59:59', // 时间范围
     isValid: true, // 选择的时间是否合法
   }
 
   if (curDateTimeStr && selDateTimeStr) {
-    let curDateTimeArr = curDateTimeStr.split(' ')
-    let selDataTimeArr = selDateTimeStr.split(' ')
+    const curDateTimeArr = curDateTimeStr.split(' ')
+    const selDataTimeArr = selDateTimeStr.split(' ')
 
     // 同一天，
     if (curDateTimeArr[0] === selDataTimeArr[0]) {
-      let curTimeArr = curDateTimeArr[1].split(':').map(item => parseInt(item))
-      let selTimeArr = selDataTimeArr[1].split(':').map(item => parseInt(item))
+      const curTimeArr = curDateTimeArr[1].split(':').map(item => parseInt(item))
+      const selTimeArr = selDataTimeArr[1].split(':').map(item => parseInt(item))
 
       if (isAfter) {
         // 之后，则只能选择当前时间之后的时间
@@ -192,18 +192,18 @@ function computedTimeRange(curDateTimeStr, selDateTimeStr, isAfter = true) {
  * @param {Boolean} isDate 是返回Date对象还是返回时间戳。true: Date对象；false: 时间戳；
  * @returns {Object | number} Date对象或者时间戳，根据isDate参数决定
  */
-function parseDateTimeStr(
+function parseDateTimeStr (
   str,
   dateSeparator = '-',
   timeSeparator = ':',
   dateTimeSeparator = ' ',
-  isDate = false
+  isDate = false,
 ) {
-  let dateTimeArr = str.split(dateTimeSeparator)
-  let dateArr = dateTimeArr[0].split(dateSeparator).map(item => parseInt(item))
-  let timeArr = dateTimeArr[1].split(timeSeparator).map(item => parseInt(item))
+  const dateTimeArr = str.split(dateTimeSeparator)
+  const dateArr = dateTimeArr[0].split(dateSeparator).map(item => parseInt(item))
+  const timeArr = dateTimeArr[1].split(timeSeparator).map(item => parseInt(item))
   // new Date()的参数
-  let param = []
+  const param = []
 
   // 日期
   for (let i = 0; i < dateArr.length; i++) {
@@ -215,7 +215,7 @@ function parseDateTimeStr(
     }
   }
   // 时间
-  for (let j in timeArr) {
+  for (const j in timeArr) {
     param.push(timeArr[j])
   }
   // 加上毫秒
@@ -235,7 +235,7 @@ function parseDateTimeStr(
  * @param {number} pageIndex 当前页码
  * @returns {Boolean} true: 是；false： 不是;
  */
-function isLastPageLastData(total, pageSize, pageIndex) {
+function isLastPageLastData (total, pageSize, pageIndex) {
   // 当前页码是1，则不用判断
   if (pageIndex === 1) {
     return false
@@ -257,7 +257,7 @@ function isLastPageLastData(total, pageSize, pageIndex) {
  * @param {string} srt 需要转义的字符串
  * @returns {string} 转义后的字符串
  */
-function htmlEncode(str) {
+function htmlEncode (str) {
   if (!str) {
     return ''
   }
@@ -267,5 +267,4 @@ function htmlEncode(str) {
     .replace(/>/g, '&gt;')
 }
 
-export { debounced, throttle, curDateTime, isLastPageLastData, htmlEncode, curTimeObj, computedTimeRange, parseDateTimeStr, }
-
+export { debounced, throttle, curDateTime, isLastPageLastData, htmlEncode, curTimeObj, computedTimeRange, parseDateTimeStr }
