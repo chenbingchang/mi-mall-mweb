@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'discover',
+  name: 'Discover',
   data () {
     return {}
   },

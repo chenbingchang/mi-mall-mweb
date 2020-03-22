@@ -7,8 +7,8 @@
       <router-link
         class="footer-tab"
         v-for="footerTab in footerTabList"
-        :to="{ name: footerTab.cmpName }"
-        :key="footerTab.cmpName"
+        :to="{ name: footerTab.routeName }"
+        :key="footerTab.routeName"
       >
         <i
           class="iconfont"
@@ -24,32 +24,32 @@
 // @ is an alias to /src
 
 export default {
-  name: 'index',
+  name: 'Index',
   data () {
     return {
       footerTabList: [
         {
-          cmpName: 'home', // 组件的name
+          routeName: 'Home', // 路由的name
           iconClassName: 'icon-home',
           txt: '首页',
         },
         {
-          cmpName: 'category',
+          routeName: 'Category',
           iconClassName: 'icon-category',
           txt: '分类',
         },
         {
-          cmpName: 'discover',
+          routeName: 'Discover',
           iconClassName: 'icon-discovery',
           txt: '星球',
         },
         {
-          cmpName: 'cart',
+          routeName: 'Cart',
           iconClassName: 'icon-cart',
           txt: '购物车',
         },
         {
-          cmpName: 'user',
+          routeName: 'User',
           iconClassName: 'icon-user',
           txt: '我的',
         },

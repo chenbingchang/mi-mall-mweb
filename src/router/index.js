@@ -11,31 +11,31 @@ const routes = [
     children: [
       {
         path: '/',
-        name: 'home',
+        name: 'Home',
         component: () =>
           import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
       },
       {
         path: 'category',
-        name: 'category',
+        name: 'Category',
         component: () =>
           import(/* webpackChunkName: "category" */ '@/views/Category.vue'),
       },
       {
         path: 'discover',
-        name: 'discover',
+        name: 'Discover',
         component: () =>
           import(/* webpackChunkName: "discover" */ '@/views/Discover.vue'),
       },
       {
         path: 'cart',
-        name: 'cart',
+        name: 'Cart',
         component: () =>
           import(/* webpackChunkName: "cart" */ '@/views/Cart.vue'),
       },
       {
         path: 'user',
-        name: 'user',
+        name: 'User',
         component: () =>
           import(/* webpackChunkName: "user" */ '@/views/User.vue'),
       },

@@ -28,7 +28,8 @@ npm run lint
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-vscode 配置
+### vscode 配置
+
 /_ 代码保存自动格式化--------------------------------------开始 _/
 // 保存时格式化
 "editor.formatOnSave": true,
@@ -53,7 +54,7 @@ vscode 配置
 "prettier.singleQuote": false, // 单引号
 /_ 代码保存自动格式化--------------------------------------结束 _/
 
-技术栈：vue 全家桶 + axios + sass
+### 技术栈：vue 全家桶 + axios + sass
 
 node:12.10.0
 npm:6.10.3

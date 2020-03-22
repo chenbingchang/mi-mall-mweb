@@ -1,5 +1,5 @@
 const path = require('path')
-function resolve(dir) {
+function resolve (dir) {
   return path.join(__dirname, dir)
 }
 
@@ -23,4 +23,15 @@ module.exports = {
       .set('@assets', resolve('src/assets'))
       .set('@common', resolve('src/common'))
   },
+  // @vue/cli-plugin-pwa插件配置
+  // pwa: {
+  //   // 浏览器小图标路径
+  //   iconPaths: {
+  //     favicon32: 'favicon.ico',
+  //     favicon16: 'favicon.ico',
+  //     appleTouchIcon: 'favicon.ico',
+  //     maskIcon: 'favicon.ico',
+  //     msTileImage: 'favicon.ico',
+  //   },
+  // },
 }
