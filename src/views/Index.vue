@@ -10,8 +10,10 @@
         :to="{ name: footerTab.routerName }"
         :key="footerTab.routerName"
       >
-        <i class="iconfont"
-:class="footerTab.iconClassName"></i>
+        <i
+          class="iconfont"
+          :class="footerTab.iconClassName"
+        ></i>
         <span class="txt">{{ footerTab.txt }}</span>
       </router-link>
     </footer>
@@ -23,7 +25,7 @@
 
 export default {
   name: 'Index',
-  data() {
+  data () {
     return {
       footerTabList: [
         {
@@ -54,7 +56,8 @@ export default {
       ],
     }
   },
-  methods: {},
+  methods: {
+  },
 }
 </script>
 
@@ -73,18 +76,23 @@ export default {
     align-items: center;
     height: px2rem(52);
     font-size: px2rem(18);
-    background: orange;
   }
 
   .footer-tab {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 20%;
+    color: #999;
+
+    /* router-link-exact-active这个类名是router-link激活时自动添加的类名 */
+    &.router-link-exact-active {
+      color: #ff6700;
+    }
 
     .iconfont {
       margin-bottom: px2rem(5);
       font-size: px2rem(20);
-      color: #7c7c7c;
       line-height: px2rem(20);
     }
 

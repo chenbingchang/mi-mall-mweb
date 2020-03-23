@@ -5,7 +5,7 @@
 <script>
 export default {
   name: 'Category',
-  data() {
+  data () {
     return {}
   },
 }

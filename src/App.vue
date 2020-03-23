@@ -6,4 +6,8 @@
   </div>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+#app {
+  user-select: none;
+}
+</style>

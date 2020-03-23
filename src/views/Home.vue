@@ -1,6 +1,9 @@
 <template>
   <div class="home">
-    <header class="header">头部</header>
+    <!-- 下载app的提示放在外层 -->
+    <header class="header">
+      头部
+    </header>
     <section class="content-wrap">内容</section>
   </div>
 </template>
@@ -10,7 +13,7 @@
 
 export default {
   name: 'Home',
-  data() {
+  data () {
     return {}
   },
   methods: {},
@@ -24,7 +27,6 @@ export default {
   bottom: px2rem(52);
   width: 100vw;
   background: red;
-  font-size: px2rem(18);
 
   .header {
     position: fixed;
