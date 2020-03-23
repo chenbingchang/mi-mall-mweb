@@ -1,20 +1,20 @@
 <template>
-  <div class="index">
+  <div class="c-index">
     <keep-alive>
       <router-view></router-view>
     </keep-alive>
-    <footer class="footer">
+    <footer class="c-footer">
       <router-link
-        class="footer-tab"
+        class="c-footer__tab"
         v-for="footerTab in footerTabList"
         :to="{ name: footerTab.routerName }"
         :key="footerTab.routerName"
       >
         <i
-          class="iconfont"
+          class="c-footer__tab__iconfont iconfont"
           :class="footerTab.iconClassName"
         ></i>
-        <span class="txt">{{ footerTab.txt }}</span>
+        <span class="c-footer__tab__txt">{{ footerTab.txt }}</span>
       </router-link>
     </footer>
   </div>
@@ -62,11 +62,11 @@ export default {
 </script>
 
 <style lang="scss">
-.index {
+.c-index {
   width: 100vw;
   height: 100vh;
 
-  .footer {
+  .c-footer {
     position: fixed;
     left: 0;
     right: 0;
@@ -78,11 +78,10 @@ export default {
     font-size: px2rem(18);
   }
 
-  .footer-tab {
+  .c-footer__tab {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 20%;
     color: #999;
 
     /* router-link-exact-active这个类名是router-link激活时自动添加的类名 */
@@ -90,14 +89,15 @@ export default {
       color: #ff6700;
     }
 
-    .iconfont {
+    &__iconfont {
       margin-bottom: px2rem(5);
       font-size: px2rem(20);
       line-height: px2rem(20);
     }
 
-    .txt {
+    &__txt {
       font-size: px2rem(12);
+      line-height: 1;
     }
   }
 }

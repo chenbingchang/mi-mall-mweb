@@ -1,10 +1,11 @@
 <template>
-  <div class="home">
-    <!-- 下载app的提示放在外层 -->
-    <header class="header">
-      头部
+  <div class="c-home">
+    <header class="c-header">
+      <div class="c-download-app"></div>
+      <div class="c-"></div>
+      <div class=""></div>
     </header>
-    <section class="content-wrap">内容</section>
+    <section class="c-content">内容</section>
   </div>
 </template>
 
@@ -21,14 +22,14 @@ export default {
 </script>
 
 <style lang="scss">
-.home {
+.c-home {
   position: absolute;
   top: 0;
   bottom: px2rem(52);
   width: 100vw;
   background: red;
 
-  .header {
+  .c-header {
     position: fixed;
     left: 0;
     top: 0;
@@ -37,7 +38,7 @@ export default {
     background: greenyellow;
   }
 
-  .content-wrap {
+  .c-content {
     position: absolute;
     top: px2rem(100);
     bottom: 0;
