@@ -7,13 +7,11 @@
       <router-link
         class="footer-tab"
         v-for="footerTab in footerTabList"
-        :to="{ name: footerTab.routeName }"
-        :key="footerTab.routeName"
+        :to="{ name: footerTab.routerName }"
+        :key="footerTab.routerName"
       >
-        <i
-          class="iconfont"
-          :class="footerTab.iconClassName"
-        ></i>
+        <i class="iconfont"
+:class="footerTab.iconClassName"></i>
         <span class="txt">{{ footerTab.txt }}</span>
       </router-link>
     </footer>
@@ -25,31 +23,31 @@
 
 export default {
   name: 'Index',
-  data () {
+  data() {
     return {
       footerTabList: [
         {
-          routeName: 'Home', // 路由的name
+          routerName: 'Home', // 路由的name
           iconClassName: 'icon-home',
           txt: '首页',
         },
         {
-          routeName: 'Category',
+          routerName: 'Category',
           iconClassName: 'icon-category',
           txt: '分类',
         },
         {
-          routeName: 'Discover',
+          routerName: 'Discover',
           iconClassName: 'icon-discovery',
           txt: '星球',
         },
         {
-          routeName: 'Cart',
+          routerName: 'Cart',
           iconClassName: 'icon-cart',
           txt: '购物车',
         },
         {
-          routeName: 'User',
+          routerName: 'User',
           iconClassName: 'icon-user',
           txt: '我的',
         },

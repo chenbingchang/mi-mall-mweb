@@ -5,7 +5,7 @@
 <script>
 export default {
   name: 'Discover',
-  data () {
+  data() {
     return {}
   },
 }

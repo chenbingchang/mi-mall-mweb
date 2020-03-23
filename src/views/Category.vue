@@ -1,11 +1,11 @@
 <template>
-  <div>cart</div>
+  <div>category</div>
 </template>
 
 <script>
 export default {
-  name: 'Cart',
-  data () {
+  name: 'Category',
+  data() {
     return {}
   },
 }

@@ -1,11 +1,11 @@
 <template>
-  <div>category</div>
+  <div>user</div>
 </template>
 
 <script>
 export default {
-  name: 'Category',
-  data () {
+  name: 'User',
+  data() {
     return {}
   },
 }
