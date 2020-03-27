@@ -8,11 +8,13 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        // 把全局公用的样式，全局引入，不用一个个引入
+        /**
+         * 把prependData里面的资源全部分别加入到每个css文件里面
+         * 适合放scss的变量/函数/混合等不会生成css，从而避免在每个用的的地方@import引入
+         * 不适合放基础样式/全局样式，因为这样会在生成的每个css中都有基础或全局的样式
+         */
         prependData: `
-          @import "@/common/css/base.scss";
           @import "@/common/css/common.scss";
-          @import "@/common/css/iconfont.scss";
         `,
       },
     },

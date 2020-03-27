@@ -24,19 +24,19 @@
   }
   则&表示   .head .txt .txt-icon
   */
-  [data-dpr='2'] & {
+  [data-dpr="2"] & {
     font-size: $px * 2;
   }
-  [data-dpr='2.5'] & {
+  [data-dpr="2.5"] & {
     font-size: $px * 2.5;
   }
-  [data-dpr='2.75'] & {
+  [data-dpr="2.75"] & {
     font-size: $px * 2.75;
   }
-  [data-dpr='3'] & {
+  [data-dpr="3"] & {
     font-size: $px * 3;
   }
-  [data-dpr='4'] & {
+  [data-dpr="4"] & {
     font-size: $px * 4;
   }
 }

@@ -1,20 +1,20 @@
 <template>
-  <div class="c-index">
+  <div class="index">
     <keep-alive>
       <router-view></router-view>
     </keep-alive>
-    <footer class="c-footer">
+    <footer class="footer">
       <router-link
-        class="c-footer__tab"
+        class="footer__tab"
         v-for="footerTab in footerTabList"
         :to="{ name: footerTab.routerName }"
         :key="footerTab.routerName"
       >
         <i
-          class="c-footer__tab__iconfont iconfont"
+          class="footer__tab__iconfont iconfont"
           :class="footerTab.iconClassName"
         ></i>
-        <span class="c-footer__tab__txt">{{ footerTab.txt }}</span>
+        <span class="footer__tab__txt">{{ footerTab.txt }}</span>
       </router-link>
     </footer>
   </div>
@@ -56,17 +56,16 @@ export default {
       ],
     }
   },
-  methods: {
-  },
+  methods: {},
 }
 </script>
 
 <style lang="scss">
-.c-index {
+.index {
   width: 100vw;
   height: 100vh;
 
-  .c-footer {
+  .footer {
     position: fixed;
     left: 0;
     right: 0;
@@ -78,7 +77,7 @@ export default {
     font-size: px2rem(18);
   }
 
-  .c-footer__tab {
+  .footer__tab {
     display: flex;
     flex-direction: column;
     align-items: center;

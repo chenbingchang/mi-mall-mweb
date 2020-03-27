@@ -1,11 +1,11 @@
 <template>
-  <div class="c-home">
-    <header class="c-header">
-      <div class="c-download-app"></div>
-      <div class="c-"></div>
+  <div class="home">
+    <header class="header">
+      <div class="download-app"></div>
+      <div class=""></div>
       <div class=""></div>
     </header>
-    <section class="c-content">内容</section>
+    <section class="content">内容</section>
   </div>
 </template>
 
@@ -22,14 +22,14 @@ export default {
 </script>
 
 <style lang="scss">
-.c-home {
+.home {
   position: absolute;
   top: 0;
   bottom: px2rem(52);
   width: 100vw;
   background: red;
 
-  .c-header {
+  .header {
     position: fixed;
     left: 0;
     top: 0;
@@ -38,7 +38,7 @@ export default {
     background: greenyellow;
   }
 
-  .c-content {
+  .content {
     position: absolute;
     top: px2rem(100);
     bottom: 0;
