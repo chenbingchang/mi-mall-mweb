@@ -10,9 +10,7 @@ module.exports = {
       sass: {
         // 把全局公用的样式，全局引入，不用一个个引入
         prependData: `
-          @import "@/common/css/base.scss";
           @import "@/common/css/common.scss";
-          @import "@/common/css/iconfont.scss";
         `,
       },
     },
