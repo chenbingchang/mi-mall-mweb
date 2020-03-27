@@ -40,7 +40,7 @@ export default {
         },
         {
           routerName: 'Discover',
-          iconClassName: 'icon-discovery',
+          iconClassName: 'icon-discover',
           txt: '星球',
         },
         {
@@ -67,9 +67,9 @@ export default {
 
   .footer {
     position: fixed;
-    left: 0;
     right: 0;
     bottom: 0;
+    left: 0;
     display: flex;
     justify-content: space-around;
     align-items: center;

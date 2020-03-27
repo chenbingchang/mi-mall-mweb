@@ -5,6 +5,7 @@ function resolve (dir) {
 
 module.exports = {
   publicPath: './',
+  assetsDir: '',
   css: {
     loaderOptions: {
       sass: {
@@ -18,6 +19,10 @@ module.exports = {
         `,
       },
     },
+  },
+  devServer: {
+    hot: true,
+    liveReload: true,
   },
   chainWebpack: config => {
     config.resolve.alias

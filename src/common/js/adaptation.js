@@ -86,9 +86,10 @@ function adaptation () {
   window.addEventListener(
     'pageshow',
     function (e) {
-      if (e.persisted) {
-        setBaseFontSize()
-      }
+      // 是否从缓存中读取
+      // if (e.persisted) {
+      setBaseFontSize()
+      // }
     },
     false,
   )

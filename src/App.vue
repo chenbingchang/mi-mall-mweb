@@ -10,6 +10,8 @@
 @import "@common/css/base";
 
 #app {
+  width: 100vw;
+  height: 100vh;
   user-select: none;
 }
 </style>
