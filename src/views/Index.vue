@@ -70,17 +70,13 @@ export default {
     right: 0;
     bottom: 0;
     left: 0;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    @include flex(space-around);
     height: px2rem(52);
     font-size: px2rem(18);
   }
 
   .footer__tab {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include flex(flex-start, center, column);
     color: #999;
 
     /* router-link-exact-active这个类名是router-link激活时自动添加的类名 */

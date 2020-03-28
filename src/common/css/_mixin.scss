@@ -1,0 +1,46 @@
+// (现在不用)由于整体页面缩小1/dpr，所以dpr!==1时要放大dpr倍，否则字体真实显示会缩小1/dpr
+@mixin fontSize($px) {
+  font-size: $px;
+
+  /*
+  &代表父类选择器，如果父类是嵌套多层的，则&也是嵌套多层，
+  比如(scss):
+  .head {
+    .txt {
+      .txt-icon {
+        @include fontSize(14px)
+      }
+    }
+  }
+  则&表示   .head .txt .txt-icon
+  */
+  [data-dpr="2"] & {
+    font-size: $px * 2;
+  }
+  [data-dpr="2.5"] & {
+    font-size: $px * 2.5;
+  }
+  [data-dpr="2.75"] & {
+    font-size: $px * 2.75;
+  }
+  [data-dpr="3"] & {
+    font-size: $px * 3;
+  }
+  [data-dpr="4"] & {
+    font-size: $px * 4;
+  }
+}
+
+// 100%宽高
+@mixin full-wh {
+  width: 100%;
+  height: 100%;
+}
+
+// 布局
+@mixin flex($h: center, $v: center, $direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $h;
+  align-items: $v;
+}

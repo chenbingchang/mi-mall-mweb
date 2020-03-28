@@ -1,0 +1,4 @@
+// px转成rem
+@function px2rem($px) {
+  @return $px / 100 + rem;
+}

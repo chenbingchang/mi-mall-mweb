@@ -1,42 +1,8 @@
+@import "./variable";
+@import "./mixin";
+@import "./function";
+
 /*
-公用scss变量、混入、函数
+公用scss变量、混入、函数，最终不生成到css里面去，单单只是为了开发方便
 设计稿按照iphone6来(375*667)
 */
-
-// px转成rem
-@function px2rem($px) {
-  @return $px / 100 + rem;
-}
-
-// 由于整体页面缩小1/dpr，所以dpr!==1时要放大dpr倍，否则字体真实显示会缩小1/dpr
-@mixin fontSize($px) {
-  font-size: $px;
-
-  /*
-  &代表父类选择器，如果父类是嵌套多层的，则&也是嵌套多层，
-  比如(scss):
-  .head {
-    .txt {
-      .txt-icon {
-        @include fontSize(14px)
-      }
-    }
-  }
-  则&表示   .head .txt .txt-icon
-  */
-  [data-dpr="2"] & {
-    font-size: $px * 2;
-  }
-  [data-dpr="2.5"] & {
-    font-size: $px * 2.5;
-  }
-  [data-dpr="2.75"] & {
-    font-size: $px * 2.75;
-  }
-  [data-dpr="3"] & {
-    font-size: $px * 3;
-  }
-  [data-dpr="4"] & {
-    font-size: $px * 4;
-  }
-}
