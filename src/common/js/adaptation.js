@@ -50,6 +50,7 @@ function adaptation () {
   }
 
   const setBaseFontSize = function () {
+    console.log('重置-html-font-size')
     // 横屏状态检测
     if (window.orientation === 90 || window.orientation === -90) {
       isLandscape = true
@@ -73,12 +74,16 @@ function adaptation () {
     docEle.setAttribute('data-dpr', dpr)
   }
 
+  let tid = null
   // 页面发生变化时重置font-size
-  // 防止多个事件重复执行，增加延迟300ms操作(防抖)
+  // 防止多个事件重复执行，增加延迟100ms操作(防抖)
   window.addEventListener(
     'resize',
     function () {
-      setBaseFontSize()
+      if (tid) {
+        clearTimeout(tid)
+      }
+      tid = setTimeout(setBaseFontSize, 100)
     },
     false,
   )
@@ -87,9 +92,12 @@ function adaptation () {
     'pageshow',
     function (e) {
       // 是否从缓存中读取
-      // if (e.persisted) {
-      setBaseFontSize()
-      // }
+      if (e.persisted) {
+        if (tid) {
+          clearTimeout(tid)
+        }
+        tid = setTimeout(setBaseFontSize, 100)
+      }
     },
     false,
   )

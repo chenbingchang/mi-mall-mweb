@@ -81,7 +81,7 @@ export default {
 
     /* router-link-exact-active这个类名是router-link激活时自动添加的类名 */
     &.router-link-exact-active {
-      color: #ff6700;
+      color: $main-color;
     }
 
     &__iconfont {
