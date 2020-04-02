@@ -91,7 +91,7 @@ function adaptation () {
   window.addEventListener(
     'pageshow',
     function (e) {
-      // 是否从缓存中读取
+      // 是否从缓存中读取，e.persisted只有pageshow事件才有
       if (e.persisted) {
         if (tid) {
           clearTimeout(tid)

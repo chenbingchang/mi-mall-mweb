@@ -1,12 +1,18 @@
 <template>
   <div class="home">
     <header class="header">
-      <div class="download-app">
+      <div
+        class="download-app"
+        v-show="isShowDownloadApp"
+      >
         <img
           class="download-app__img"
           src="@/assets/imgs/download-app.png"
         />
-        <span class="download-app__close"></span>
+        <span
+          class="download-app__close"
+          @click="closeDownloadApp"
+        ></span>
       </div>
       <div class="search">
         <div class="search__left">
@@ -57,21 +63,46 @@
         </div>
       </div>
     </header>
-    <section class="content">内容43</section>
+    <section
+      class="content"
+      :class="{'show-download-app': isShowDownloadApp}"
+    >内容4</section>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import { HOME_APP_TIP } from '@common/js/constants'
 
 export default {
   name: 'Home',
   data () {
     return {
+      isShowDownloadApp: true, // 是否显示下载APP提示
       isShowAllCategory: false, // 显示所有一级分类
     }
   },
   methods: {
+    /**
+     * 初始化数据
+     */
+    initData () {
+      const appTip = localStorage.getItem(HOME_APP_TIP)
+      console.log(appTip)
+      if (appTip) {
+        this.isShowDownloadApp = appTip
+      }
+    },
+    /**
+     * 关闭下载APP提示
+     */
+    closeDownloadApp () {
+      this.isShowDownloadApp = false
+      localStorage.setItem(HOME_APP_TIP, false)
+    },
+  },
+  created () {
+    this.initData()
   },
 }
 </script>
@@ -81,7 +112,7 @@ export default {
   position: absolute;
   top: 0;
   bottom: px2rem(52);
-  width: 100vw;
+  width: 100%;
   background: #fff;
 
   .header {
@@ -192,8 +223,8 @@ export default {
       padding: 0 px2rem(12.5);
 
       &__title {
-        // padding-top: px2rem(13);
-        height: px2rem(27);
+        padding-top: px2rem(12.5);
+        height: px2rem(16);
         vertical-align: bottom;
         font-size: px2rem(14);
         line-height: px2rem(27);
@@ -230,11 +261,14 @@ export default {
 
   .content {
     position: absolute;
-    // top: px2rem(70);
-    top: px2rem(121);
+    top: px2rem(70);
     bottom: 0;
     width: 100%;
     background: blue;
+
+    &.show-download-app {
+      top: px2rem(121);
+    }
   }
 }
 </style>
