@@ -22,13 +22,19 @@
             alt="小米图标"
           >
         </div>
-        <div class="search__middle">
+        <div
+          class="search__middle"
+          @click="$router.push({ name: 'Search' })"
+        >
           <div class="search__middle__icon-wrap">
             <i class="search__middle__icon iconfont icon-search"></i>
           </div>
           搜索商品名称
         </div>
-        <div class="search__right">
+        <div
+          class="search__right"
+          @click="$router.push({name: 'User'})"
+        >
           <i class="search__right__icon iconfont icon-user"></i>
         </div>
       </div>
@@ -44,6 +50,7 @@
           <li class="nav__shrink__item">笔记本</li>
           <li class="nav__shrink__item">家电</li>
           <li class="nav__shrink__item">生活周边</li>
+          <!-- 占位，否则最后一个会被，显示全部按钮挡住 -->
           <li class="nav__shrink__item--extra"></li>
         </ul>
         <div
@@ -51,6 +58,15 @@
           v-show="isShowAllCategory"
         >
           <div class="nav__spread__title">全部</div>
+          <ul class="nav__spread__list">
+            <li class="nav__spread__list__item is-active">推荐</li>
+            <li class="nav__spread__list__item">手机</li>
+            <li class="nav__spread__list__item">智能</li>
+            <li class="nav__spread__list__item">电视</li>
+            <li class="nav__spread__list__item">笔记本</li>
+            <li class="nav__spread__list__item">家电</li>
+            <li class="nav__spread__list__item">生活周边</li>
+          </ul>
         </div>
         <div
           class="nav__show-all"
@@ -66,7 +82,15 @@
     <section
       class="content"
       :class="{'show-download-app': isShowDownloadApp}"
-    >内容4</section>
+    >
+      <div
+        class="content__mask"
+        v-show="isShowAllCategory"
+      ></div>
+      <div class="body">1111</div>
+      <div class="body">22222</div>
+      <div class="body">33333</div>
+    </section>
   </div>
 </template>
 
@@ -80,6 +104,16 @@ export default {
     return {
       isShowDownloadApp: true, // 是否显示下载APP提示
       isShowAllCategory: false, // 显示所有一级分类
+      activeCategory: 0,
+      categoryList: [
+        { name: '推荐', id: '' },
+        { name: '手机', id: '' },
+        { name: '智能', id: '' },
+        { name: '电视', id: '' },
+        { name: '笔记本', id: '' },
+        { name: '家电', id: '' },
+        { name: '生活周边', id: '' },
+      ],
     }
   },
   methods: {
@@ -88,7 +122,7 @@ export default {
      */
     initData () {
       const appTip = localStorage.getItem(HOME_APP_TIP)
-      console.log(appTip)
+
       if (appTip) {
         this.isShowDownloadApp = appTip
       }
@@ -110,6 +144,7 @@ export default {
 <style lang="scss">
 .home {
   position: absolute;
+  z-index: 1;
   top: 0;
   bottom: px2rem(52);
   width: 100%;
@@ -117,10 +152,11 @@ export default {
 
   .header {
     position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
     width: 100%;
-    background: $main-color2;
+    background: $main-color3;
   }
 
   .download-app {
@@ -227,8 +263,37 @@ export default {
         height: px2rem(16);
         vertical-align: bottom;
         font-size: px2rem(14);
-        line-height: px2rem(27);
         color: #3c3c3c;
+      }
+
+      &__list {
+        margin-top: px2rem(17);
+        font-size: 0;
+
+        &__item {
+          box-sizing: border-box;
+          display: inline-block;
+          width: px2rem(76);
+          height: px2rem(28);
+          border: 1px solid #e5e5e5;
+          border-radius: px2rem(4);
+          margin-right: px2rem(10);
+          margin-bottom: px2rem(12);
+          background-color: #fff;
+          text-align: center;
+          font-size: px2rem(12.5);
+          line-height: px2rem(26);
+
+          &.is-active {
+            border-color: $main-color2;
+            background-color: #fde0d5;
+            color: $main-color2;
+          }
+
+          &:nth-last-of-type(4n) {
+            margin-right: 0;
+          }
+        }
       }
     }
 
@@ -237,8 +302,8 @@ export default {
       right: 0;
       top: 0;
       width: px2rem(34);
-      height: 100%;
-      background: $main-color2;
+      height: px2rem(27.5);
+      background: $main-color3;
       text-align: center;
       font-size: 0;
       box-shadow: -15px 0 15px 0 #f2f2f2;
@@ -261,6 +326,7 @@ export default {
 
   .content {
     position: absolute;
+    z-index: 0;
     top: px2rem(70);
     bottom: 0;
     width: 100%;
@@ -268,6 +334,19 @@ export default {
 
     &.show-download-app {
       top: px2rem(121);
+    }
+
+    &__mask {
+      position: absolute;
+      z-index: 99;
+      top: 0;
+      left: 0;
+      @include full-wh();
+      background-color: rgba(0,0,0,.3);
+    }
+
+    .body {
+      font-size: 14px;
     }
   }
 }
