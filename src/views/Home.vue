@@ -42,14 +42,16 @@
         <ul
           class="nav__shrink"
           v-show="!isShowAllCategory"
+          ref="navShrink"
         >
-          <li class="nav__shrink__item is-active">推荐</li>
-          <li class="nav__shrink__item">手机</li>
-          <li class="nav__shrink__item">智能</li>
-          <li class="nav__shrink__item">电视</li>
-          <li class="nav__shrink__item">笔记本</li>
-          <li class="nav__shrink__item">家电</li>
-          <li class="nav__shrink__item">生活周边</li>
+          <li
+            v-for="item in categoryList"
+            :key="item.id"
+            class="nav__shrink__item"
+            :class="{'is-active': activeCategory === item.id}"
+            :ref="item.id"
+            @click="chgCategory(item.id)"
+          >{{item.name}}</li>
           <!-- 占位，否则最后一个会被，显示全部按钮挡住 -->
           <li class="nav__shrink__item--extra"></li>
         </ul>
@@ -59,18 +61,18 @@
         >
           <div class="nav__spread__title">全部</div>
           <ul class="nav__spread__list">
-            <li class="nav__spread__list__item is-active">推荐</li>
-            <li class="nav__spread__list__item">手机</li>
-            <li class="nav__spread__list__item">智能</li>
-            <li class="nav__spread__list__item">电视</li>
-            <li class="nav__spread__list__item">笔记本</li>
-            <li class="nav__spread__list__item">家电</li>
-            <li class="nav__spread__list__item">生活周边</li>
+            <li
+              v-for="item in categoryList"
+              :key="item.id"
+              class="nav__spread__list__item"
+              :class="{'is-active': activeCategory === item.id}"
+              @click="activeCategory = item.id"
+            >{{item.name}}</li>
           </ul>
         </div>
         <div
           class="nav__show-all"
-          @click="isShowAllCategory = !isShowAllCategory"
+          @click="toggleShowNavAll"
         >
           <i
             class="nav__show-all__icon iconfont icon-up"
@@ -91,6 +93,7 @@
       <div class="body">22222</div>
       <div class="body">33333</div>
     </section>
+    <div style="width: 1px; height: 100%; position: absolute; left: 50%; top: 0; background-color: red;"></div>
   </div>
 </template>
 
@@ -104,15 +107,15 @@ export default {
     return {
       isShowDownloadApp: true, // 是否显示下载APP提示
       isShowAllCategory: false, // 显示所有一级分类
-      activeCategory: 0,
+      activeCategory: 'recommend', // 激活的分类
       categoryList: [
-        { name: '推荐', id: '' },
-        { name: '手机', id: '' },
-        { name: '智能', id: '' },
-        { name: '电视', id: '' },
-        { name: '笔记本', id: '' },
-        { name: '家电', id: '' },
-        { name: '生活周边', id: '' },
+        { name: '推荐', id: 'recommend' },
+        { name: '手机', id: 'phone' },
+        { name: '智能', id: 'intelligence' },
+        { name: '电视', id: 'television' },
+        { name: '笔记本', id: 'notebook' },
+        { name: '家电', id: 'electron' },
+        { name: '生活周边', id: 'around' },
       ],
     }
   },
@@ -133,6 +136,45 @@ export default {
     closeDownloadApp () {
       this.isShowDownloadApp = false
       localStorage.setItem(HOME_APP_TIP, false)
+    },
+    /**
+     * 切换显示、隐藏一级分类列表全部
+     */
+    toggleShowNavAll () {
+      this.isShowAllCategory = !this.isShowAllCategory
+      // 收起，重新定位收缩列表的滚动条
+      if (!this.isShowAllCategory) {
+        this.$nextTick(function () {
+          this.chgCategory(this.activeCategory)
+        })
+      }
+    },
+    /**
+     * 改变一级分类
+     * @param {string} category 一级分类
+     */
+    chgCategory (category) {
+      this.activeCategory = category
+      // 激活的项要在屏幕中间
+      /**
+       * tips: this.$refs 如果是静态写死的，访问时是返回一个对象，而如果是动态的则会是一个数组
+       */
+      const curTarget = this.$refs[category][0]
+      // 屏幕中心和元素中心的差距
+      const offset = (screen.availWidth / 2) - (curTarget.getBoundingClientRect().left + curTarget.offsetWidth / 2)
+      const navShrinkEl = this.$refs.navShrink
+      const maxScrollLeft = navShrinkEl.scrollWidth - navShrinkEl.clientWidth
+      // 当前scrollLeft减去偏移的量
+      let nextLeft = navShrinkEl.scrollLeft - offset
+
+      // 判断scrollLeft要在合理范围
+      if (nextLeft < 0) {
+        nextLeft = 0
+      } else if (nextLeft > maxScrollLeft) {
+        nextLeft = maxScrollLeft
+      }
+
+      navShrinkEl.scrollLeft = nextLeft
     },
   },
   created () {
